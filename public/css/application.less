@@ -1,0 +1,221 @@
+@import "public/css/utils";
+@import "public/css/theme";
+
+body {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0; top: 0;
+  .vbox();
+}
+
+#container {
+  .box-flex(1);
+  .hbox();
+}
+
+.sidebar {
+  .vbox();
+  background: lighten(#DDDAC4, 3%);
+  width: 180px;
+  border-right: 1px solid #A19E8E;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4), 
+                      -2px 0 3px rgba(0,0,0, 0.1);
+}
+
+.sidebar .body {
+  .box-flex(1);
+  overflow: auto;  
+}
+
+.sidebar h3 {
+  color: #615F5B;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+  margin: 0;
+  padding: 5px 5px 5px 10px;
+  font-size: 13px;
+  border-bottom: 1px solid #979484;
+  .vbg-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.13));
+}
+
+.sidebar .items {
+  .item {
+    font-size: 13px;
+    padding: 9px;
+    cursor: pointer;
+    overflow: hidden;
+    color: lighten(#3E3D37, 5%);
+    text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid #B1AD9B;
+    
+    &:first-child { .inset-box-shadow(1px, 1px, 0, rgba(255, 255, 255, 0.4)); }
+    &:first-child.active { border-top: none;}
+  
+    &.active, &:active {
+      .inset-box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.1));
+      .vbg-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.1));      
+    }      
+      
+/*    
+    &:after {
+      .cta();
+      float: right;
+    }   
+*/  
+}
+  
+  .item.active + .item {
+    .inset-line();
+  }
+}
+
+.panels > *:not(.active) {
+  display: none !important;
+}
+
+#header h1 {
+  margin: 8px;
+  padding: 0;
+  border: 0;
+  float: left;
+  color: #414041;
+  font-size: 16px;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.4);
+}
+
+#scope {
+  padding: 7px 10px;
+  color: #FFF;
+  text-shadow: 0 -1px #000;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid lighten(#000, 10%);
+  .vbg-gradient(#414140, #2E2E2E);
+  background: -webkit-gradient(linear, left top, left bottom,   
+                from(rgba(255, 255, 255, 0.2)), 
+                color-stop(0.7, rgba(255, 255, 255, 0))
+              ), #2E2E2E;
+                            
+  &:after {
+    position: relative;
+    bottom: 2px;
+    left: 3px;
+    content: "↑";
+  }
+  
+  &:active {
+    border-top: 1px solid #000;
+    .vbg-gradient(darken(#2E2E2E, 5%), #2E2E2E);
+  }
+}
+
+#search {
+  margin: 8px;
+  float: right;
+}
+
+#main {
+  position: relative;
+  .box-flex(1);
+  .hbox();
+  .box-shadow(-2px, 0, 3px, rgba(0,0,0, 0.1));
+}
+
+#main > * {
+  .hbox();
+  .box-flex(1);
+}
+
+#main .body {
+  .box-flex(1);
+  .vbox();
+  overflow: auto;
+  position: relative;
+  line-height: 22px;  
+}
+
+#main nav {
+  padding: 20px;
+  width: 150px;
+  background: #F6F5EF;
+  border-right: 1px solid #B6B6B1;
+  .box-shadow(1px, 0, 0, #FFF);
+  
+  h2 {
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+  
+  h3 {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-weight: normal;
+    font-size: 12px;
+  }
+  
+  ul {
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+    border-top: 1px solid #DEDCD5;
+    font-size: 12px;
+  }
+  
+  li {
+    cursor: pointer;
+    padding: 7px 10px;
+    margin: 0;
+    border-bottom: 1px solid #DEDCD5;
+    .inset-line();
+    
+    &.active, &:active {
+      .vbg-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05));      
+    }
+  }
+}
+
+.wrap {
+  padding: 20px;
+  
+  h2 {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+}
+
+#main .venues {
+  
+  .item {
+    cursor: pointer;
+    padding: 7px 10px;    
+    border-top: 1px solid #DEDCD5;
+    .inset-line();
+    
+    &:last-child {
+      border-bottom: 1px solid #DEDCD5;      
+    }
+  }
+    
+  &.empty:after {
+    content: "Empty";
+    text-align: center;
+  }
+    
+  .back {
+    cursor: pointer;
+    font-weight: bold;
+    color: lighten(#414041, 15%);
+    font-size: 14px;
+    text-shadow: 0px 1px rgba(255, 255, 255, 0.4);
+
+    .vbg-gradient(lighten(#C4C4C4, 15%), #C4C4C4);
+    .inset-box-shadow(1px, 0, 0, rgba(255, 255, 255, 0.1));
+    border-bottom: 1px solid #9A9A99;
+    
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    margin: -20px -20px 20px -20px;
+  }  
+}
