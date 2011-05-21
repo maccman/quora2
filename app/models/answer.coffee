@@ -1,1 +1,1 @@
-Answer = module.exports = Spine.Model.setup("Answer", [])
+Answer = module.exports = Spine.Model.setup("Answer", ["name", "body"])

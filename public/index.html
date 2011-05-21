@@ -9,10 +9,41 @@
     var exports = this;
     jQuery(function(){
       var App = require("app");
-      exports.App = App.init({el: $("#body")});      
+      exports.App = App.init({el: $("body")});      
     });
   </script>
 </head>
 <body>
+  <header id="header">
+    <h1>Quora</h1>
+    <input type="search" id="search" placeholder="Search...">
+  </header>
+  
+  <div id="container">
+    <div class="sidebar">
+      <h3>Top Answers</h3>
+      <div id="questions" class="items">
+      </div>
+    </div>
+        
+    <div id="main" class="panels">
+      <div id="question" class="active">
+        <nav>
+          <h2>Answers</h2>
+          <ul>
+            <li>Test</li>
+          </ul>
+        </nav>
+        
+        <div class="body">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer id="footer">
+    <span>New Question</span>
+  </footer>
 </body>
 </html>

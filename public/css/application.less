@@ -53,14 +53,7 @@ body {
     &.active, &:active {
       .inset-box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.1));
       .vbg-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.1));      
-    }      
-      
-/*    
-    &:after {
-      .cta();
-      float: right;
-    }   
-*/  
+    }
 }
   
   .item.active + .item {
@@ -184,6 +177,12 @@ body {
   }
 }
 
+#question {
+  .box-flex(1);
+  .hbox();
+}
+
+/*
 #main .venues {
   
   .item {
@@ -218,4 +217,4 @@ body {
     padding: 0 10px;
     margin: -20px -20px 20px -20px;
   }  
-}
+}*/
