@@ -21907,6 +21907,7 @@ $.fn.forItem = function(item){
 })(Spine, Spine.$)}, "app": function(exports, require, module) {(function() {
   var Answers, Footer, Question, Searches, Sidebar;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  require("lib/jquery.easing");
   require("lib/spine.relation");
   require("lib/spine.prompt");
   require("spine.list");
@@ -22027,9 +22028,12 @@ $.fn.forItem = function(item){
       return this.list.bind("change", __bind(function(answer) {
         var element;
         element = this.answers.find(".item").forItem(answer).first();
-        if (element[0]) {
-          return this.answers.scrollTop(element[0].offsetTop - 10);
+        if (!element[0]) {
+          return;
         }
+        return this.answers.animate({
+          scrollTop: element[0].offsetTop - 10
+        }, 400, "easeInOutExpo");
       }, this));
     },
     active: function(item) {
@@ -22161,7 +22165,12 @@ $.fn.forItem = function(item){
     }
   });
 }).call(this);
-}, "lib/jquery.prompt": function(exports, require, module) {(function() {
+}, "lib/jquery.easing": function(exports, require, module) {jQuery.easing.easeInOutExpo = function (x, t, b, c, d) {
+	if (t==0) return b;
+	if (t==d) return b+c;
+	if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+	return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+};}, "lib/jquery.prompt": function(exports, require, module) {(function() {
   var $;
   $ = jQuery;
   $.prompt = function(element) {
@@ -22199,7 +22208,8 @@ $.fn.forItem = function(item){
       offset.top = offset.top - this.el.height();
       offset.top = offset.top + this.offset.top;
       this.el.offset(offset);
-      return this.el.show();
+      this.el.show();
+      return this.el.addClass("in");
     },
     close: function() {
       return this.el.remove();
@@ -22352,7 +22362,7 @@ $.fn.forItem = function(item){
 }, "views/footer/question": function(exports, require, module) {var template = "<div class=\"close\"></div>\n\n<h2>New Question</h2>\n\n<form>\n  <input type=\"text\" name=\"test\" value=\"\" placeholder=\"Subject\">\n  <textarea placeholder=\"Description\"></textarea>\n  <button>Create</button>\n</form>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
 }, "views/questions/answer": function(exports, require, module) {var template = "<div class=\"close\"></div>\n\n<h2>Answer Question</h2>\n\n<form>\n  <textarea></textarea>\n  <button>Add answer</button>\n</form>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
 }, "views/questions/list": function(exports, require, module) {var template = "<div class=\"item\">${subject}</div>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
-}, "views/questions/panel": function(exports, require, module) {var template = "<nav>\n  <div class=\"inner\">\n    <span class=\"name\">${name}</span>\n  \n    <h2>${subject}</h2>\n  \n    <p>${body}</p>\n  \n    <div class=\"items answersNav\">\n    </div>\n  </div>\n  \n  <footer>\n    <span data-name=\"answer\">Answer Question</span>\n  </footer>\n</nav>\n\n<div class=\"main answers\">\n</div>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
+}, "views/questions/panel": function(exports, require, module) {var template = "<nav>\n  <div class=\"inner\">\n    <span class=\"name\">${name}</span>\n  \n    <h2>${subject}</h2>\n  \n    <p>${body}</p>\n  \n    <div class=\"items answersNav\">\n    </div>\n  </div>\n  \n  <footer>\n    <span data-name=\"answer\">Answer Question</span>\n  </footer>\n</nav>\n\n<div class=\"main answers scroll\">\n</div>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
 }, "views/searches/list": function(exports, require, module) {var template = "<div class=\"item\">\n  <div class=\"name\">${name}</div>\n  <div class=\"subject\">${subject}</div>\n</div>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
 }, "views/searches/panel": function(exports, require, module) {var template = "<h2>Query: <span class=\"query\"></span></h2>\n\n<div class=\"items\"></div>"; module.exports = (function(data){ return jQuery.tmpl(template, data); });
 }});

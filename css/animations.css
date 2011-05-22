@@ -1,0 +1,28 @@
+@-webkit-keyframes popIn {
+  0% {
+    -webkit-transform: scale(.2);
+    opacity: 0;
+  } 
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes popOut {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  } 
+  100% {
+    -webkit-transform: scale(.2);
+    opacity: 0;
+  }
+}
+
+.in,
+.out {
+  -webkit-animation-duration: 250ms;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+}
