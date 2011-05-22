@@ -138,7 +138,7 @@ body {
   -moz-box-orient: vertical;
   -moz-box-align: stretch;
   background: #e3e0ce;
-  width: 180px;
+  width: 200px;
   border-right: 1px solid #A19E8E;
   -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4), -2px 0 3px rgba(0, 0, 0, 0.1);
 }
@@ -190,6 +190,11 @@ body {
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+#sidebar .items {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
 }
 .panels > *:not(.active) {
   display: none !important;
@@ -264,13 +269,24 @@ body {
   box-flex: 1;
 }
 #main nav {
-  padding: 20px;
-  width: 150px;
+  width: 200px;
   background: #F6F5EF;
   border-right: 1px solid #B6B6B1;
   -moz-box-shadow: 1px 0 0 #ffffff;
   -webkit-box-shadow: 1px 0 0 #ffffff;
   box-shadow: 1px 0 0 #ffffff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+}
+#main nav .inner {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  padding: 20px;
 }
 #main nav h2 {
   padding: 0;
@@ -324,16 +340,7 @@ body {
   -moz-box-align: stretch;
   -moz-box-pack: left;
 }
-#question nav {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-align: stretch;
-  display: -moz-box;
-  -moz-box-orient: vertical;
-  -moz-box-align: stretch;
-  overflow: auto;
-}
-#question nav span {
+#question nav .name {
   cursor: pointer;
   display: block;
   font-style: italic;

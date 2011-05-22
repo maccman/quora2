@@ -1,4 +1,5 @@
 require("lib/spine.relation")
+require("lib/spine.prompt")
 require("spine.list")
 require("spine.tabs")
 

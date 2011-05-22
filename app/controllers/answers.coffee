@@ -1,3 +1,26 @@
+Question = require("models/question")
+Answer = require("models/answer")
+
+AnswerPrompt = Spine.Prompt.create
+  offset:
+    top: -40
+    left: 0
+    
+  elements: 
+    "textarea": "body"
+
+  template: (items) ->
+    require("views/questions/answer")(items)
+
+  submit: (e) ->
+    e.preventDefault()
+    @item.answers.create(
+      name: "Joe Blogs", 
+      body: @body.val()
+    )
+    @item.trigger "change"
+    @close()
+
 AnswersList = Spine.List.create
   selectFirst: true
 
@@ -8,10 +31,14 @@ module.exports = Spine.Controller.create
   elements:
     ".answersNav": "answersNav",
     ".answers": "answers"
-    "textarea": "bodyInput"
+    "footer [data-name=answer]": "answerBtn"
     
   events:
-    "submit form": "create"
+    "click footer [data-name=answer]": "answerPrompt"
+    
+  init: ->
+    Question.bind "change", =>
+      @render() if @current
 
   template: (item) ->
     require("views/questions/panel")(item)
@@ -40,18 +67,14 @@ module.exports = Spine.Controller.create
     @list.bind "change", (answer) =>
       element = @answers.find(".item").forItem(answer).first()
       @answers.prop(scrollTop: element.offset().top) if element
-      
-  create: (e) ->
-    e.preventDefault()
-    return unless @current
-    @current.answers.create(
-      name: "Joe Public",
-      body: @bodyInput.val()
-    )
-    @bodyInput.val("")
-    @render()
 
   active: (item) ->
     @current = item if item
     @render()
     @trigger "active"
+    
+  answerPrompt: ->
+    @dialog.close() if @dialog
+    @dialog = AnswerPrompt.init(item: @current)
+    @dialog.render()
+    @dialog.blOffset(@answerBtn.offset())

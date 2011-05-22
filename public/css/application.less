@@ -16,7 +16,7 @@ body {
 .sidebar {
   .vbox();
   background: lighten(#DDDAC4, 3%);
-  width: 180px;
+  width: 200px;
   border-right: 1px solid #A19E8E;
   -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4), 
                       -2px 0 3px rgba(0,0,0, 0.1);
@@ -54,10 +54,16 @@ body {
       .inset-box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.1));
       .vbg-gradient(rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.1));      
     }
-}
+  }
   
   .item.active + .item {
     .inset-line();
+  }
+}
+
+#sidebar {
+  .items {
+   .box-flex(1);
   }
 }
 
@@ -121,11 +127,16 @@ body {
 }
 
 #main nav {
-  padding: 20px;
-  width: 150px;
+  width: 200px;
   background: #F6F5EF;
   border-right: 1px solid #B6B6B1;
   .box-shadow(1px, 0, 0, #FFF);
+  .vbox();
+  
+  .inner {
+    .box-flex(1);
+    padding: 20px;
+  }
   
   h2 {
     padding: 0;
@@ -175,17 +186,12 @@ body {
   .hbox();
 }
 
-#question nav {
-  .vbox();
-  overflow: auto;
-  
-  span {
-    cursor: pointer;
-    display: block;
-    font-style: italic;
-    margin-bottom: 10px;
-    font-size: 12px;
-  }
+#question nav .name {
+  cursor: pointer;
+  display: block;
+  font-style: italic;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
 
 #question .main,

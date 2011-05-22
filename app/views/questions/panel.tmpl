@@ -1,22 +1,19 @@
 <nav>
-  <span>${name}</span>
+  <div class="inner">
+    <span class="name">${name}</span>
   
-  <h2>${subject}</h2>
+    <h2>${subject}</h2>
   
-  <p>${body}</p>
+    <p>${body}</p>
   
-  <div class="items answersNav">
+    <div class="items answersNav">
+    </div>
   </div>
+  
+  <footer>
+    <span data-name="answer">Answer Question</span>
+  </footer>
 </nav>
 
-<div class="main">
-  <div class="answers">
-  </div>
-  <div class="create">
-    <h3>Add an answer</h3>
-    <form>
-      <textarea></textarea>
-      <button>Create</button>
-    </form>
-  </div>
+<div class="main answers">
 </div>
