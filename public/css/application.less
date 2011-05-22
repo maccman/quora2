@@ -67,7 +67,7 @@ body {
 }
 
 #header h1 {
-  margin: 8px;
+  margin: 0 8px;
   padding: 0;
   border: 0;
   float: left;
@@ -104,7 +104,7 @@ body {
   }
 }
 
-#search {
+#searchInput { 
   margin: 8px;
   float: right;
 }
@@ -117,7 +117,7 @@ body {
 }
 
 #main > * {
-  .hbox();
+  .vbox();
   .box-flex(1);
 }
 
@@ -196,8 +196,8 @@ body {
 
 #question .main .item {
   max-width: 530px;
-  margin: 20px;
-  padding: 0 0 10px 0;
+  margin: 20px 20px 0 20px;
+  padding: 0 0 15px 0;
   border-bottom: 1px solid lighten(#DEDCD5, 5%);
   .box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.6);
   
@@ -210,6 +210,41 @@ body {
   
   .body {
     margin-left: 10px;
+  }
+}
+
+#search {
+  .box-flex(1);
+  .vbox();
+  
+  h2 {
+    margin: 20px 20px 0 20px;
+  }
+  
+  .items {
+    .box-flex(1);
+    overflow: auto;
+  }
+  
+  .item {
+    max-width: 530px;
+    margin: 20px 20px 0 20px;
+    padding: 0 0 15px 0;
+    border-bottom: 1px solid lighten(#DEDCD5, 5%);
+    .box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.6);
+    
+    .name {
+      cursor: pointer;
+      display: block;
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .subject {
+      cursor: pointer;
+      margin-left: 10px;
+    }    
   }
 }
 

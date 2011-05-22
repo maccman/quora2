@@ -22,4 +22,6 @@ module.exports = Spine.Controller.create
 
   change: (item) ->
     @trigger "change", item
-    
+  
+  active: (item) ->
+    @list.change item

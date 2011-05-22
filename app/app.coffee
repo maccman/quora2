@@ -5,22 +5,26 @@ require("spine.tabs")
 Question = require("models/question")
 Sidebar = require("controllers/sidebar")
 Answers = require("controllers/answers")
-Search  = require("controllers/search")
+Searches  = require("controllers/searches")
 
 module.exports = Spine.Controller.create
   elements:
     "#sidebar": "sidebar"
     "#question": "question"
-    "#search": "search"
+    "#search": "searches"
 
   init: ->
     @sidebar = Sidebar.init(el: @sidebar)
     @answers = Answers.init(el: @question)
-    @search  = Search.init(el: @search)
+    @searches  = Searches.init(el: @searches)
     
-    Spine.Manager.init(@answers, @search)
+    Spine.Manager.init(@answers, @searches)
     
     @sidebar.bind "change", (item) =>
+      @answers.active(item)
+      
+    @searches.bind "change", (item) =>
+      @sidebar.active(item)
       @answers.active(item)
     
     $.getJSON "fixtures.json", (data) ->
