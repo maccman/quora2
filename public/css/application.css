@@ -274,31 +274,31 @@ body {
 }
 #main nav h2 {
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
 }
 #main nav h3 {
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
   font-weight: normal;
   font-size: 12px;
 }
-#main nav ul {
-  margin: 0;
-  list-style: none;
-  overflow: hidden;
-  border-top: 1px solid #DEDCD5;
+#main nav .item {
   font-size: 12px;
-}
-#main nav li {
   cursor: pointer;
   padding: 7px 10px;
-  margin: 0;
   border-bottom: 1px solid #DEDCD5;
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  position: relative;
 }
-#main nav li.active, #main nav li:active {
+#main nav .item .options {
+  top: 10px;
+}
+#main nav .item:first-child {
+  border-top: 1px solid #DEDCD5;
+}
+#main nav .item.active, #main nav .item:active {
   background: rgba(0, 0, 0, 0.02);
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.02)), to(rgba(0, 0, 0, 0.05)));
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05));
@@ -334,9 +334,10 @@ body {
   overflow: auto;
 }
 #question nav span {
+  cursor: pointer;
   display: block;
   font-style: italic;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 12px;
 }
 #question .main {
@@ -356,6 +357,7 @@ body {
   max-width: 530px;
   margin: 20px 20px 0 20px;
   padding: 0 0 15px 0;
+  position: relative;
   border-bottom: 1px solid #e9e8e3;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -409,6 +411,110 @@ body {
 #search .item .subject {
   cursor: pointer;
   margin-left: 10px;
+}
+.prompt {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 3px 10px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  min-height: 100px;
+  padding: 6px;
+  border: 1px solid #272727;
+  color: #E1E1E1;
+  text-shadow: 0 -1px 0 #000000;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(0.15, rgba(255, 255, 255, 0))), rgba(46, 46, 45, 0.96);
+}
+.prompt * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.prompt .close {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  cursor: pointer;
+  background: url(/images/close.png) no-repeat;
+}
+.prompt h2 {
+  margin: 0 0 5px 0;
+  padding: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #DDD;
+}
+.prompt input[type=text], .prompt textarea {
+  background: #242424;
+  border: 1px solid #1A1A1A;
+  color: #E1E1E1;
+  text-shadow: 0 -1px 0 #000000;
+  padding: 8px;
+  width: 100%;
+  margin: 5px 0 0 0;
+  resize: none;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 0 #373737;
+  -webkit-box-shadow: 0 1px 0 #373737;
+  box-shadow: 0 1px 0 #373737;
+  -webkit-box-shadow: inset 0 1px 0 #373737, 0 1px 1px #444444;
+}
+.prompt textarea {
+  min-height: 100px;
+}
+.prompt button {
+  display: block;
+  width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 7px;
+  margin: 3px 0 0 0;
+  font-size: 13px;
+  text-shadow: 0 -1px 0 #000000;
+  color: #E1E1E1;
+  -moz-box-shadow: 0 1px 0 #373737;
+  -webkit-box-shadow: 0 1px 0 #373737;
+  box-shadow: 0 1px 0 #373737;
+  -webkit-box-shadow: inset 0 1px 0 #373737, 0 1px 1px #444444;
+  background: #262626;
+  background: -webkit-gradient(linear, left top, left bottom, from(#262626), to(#191919));
+  background: -moz-linear-gradient(top, #262626, #191919);
+  background: linear-gradient(top, #262626, #191919);
+  border: 1px solid #141414;
+}
+.prompt button:active, .prompt button .active {
+  -moz-box-shadow: inset 0 1px 0 #2a2a2a;
+  -webkit-box-shadow: inset 0 1px 0 #2a2a2a;
+  box-shadow: inset 0 1px 0 #2a2a2a;
+  background: #191919;
+  background: -webkit-gradient(linear, left top, left bottom, from(#191919), to(#262626));
+  background: -moz-linear-gradient(top, #191919, #262626);
+  background: linear-gradient(top, #191919, #262626);
+}
+.prompt:after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 15px;
+  border-top: 11px solid #2e2e2d;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  height: 0px;
+  width: 0px;
 }
 /*
 #main .venues {
