@@ -1,3 +1,4 @@
+require("lib/jquery.easing")
 require("lib/spine.relation")
 require("lib/spine.prompt")
 require("spine.list")

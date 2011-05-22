@@ -28,7 +28,8 @@ Spine.Prompt = Spine.Controller.create
     offset.top = offset.top - @el.height()
     offset.top = offset.top + @offset.top
     @el.offset(offset)
-    @el.show()    
+    @el.show()
+    @el.addClass("in")
     
   close: ->
     @el.remove()
