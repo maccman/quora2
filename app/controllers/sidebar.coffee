@@ -1,14 +1,19 @@
 Question = require("models/question")
 
 List = Spine.List.create
+  selectFirst: true
+
   template: (item) ->
     require("views/questions/list")(item)
 
-Questions = module.exports = Spine.Controller.create
+module.exports = Spine.Controller.create
+  elements: 
+    ".questions": "questions"
+
   proxied: ["render", "change"]
 
   init: ->
-    @list = List.init(el: this.el)
+    @list = List.init(el: @questions)
     @list.bind("change", @change)
     Question.bind("change refresh", @render)
 
@@ -16,5 +21,5 @@ Questions = module.exports = Spine.Controller.create
     @list.render(Question.all())
 
   change: (item) ->
-    console.log(item)
+    @trigger "change", item
     

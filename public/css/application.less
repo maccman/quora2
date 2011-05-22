@@ -1,6 +1,7 @@
 @import "public/css/utils";
 @import "public/css/theme";
 
+
 body {
   position: absolute;
   left: 0; right: 0;
@@ -120,14 +121,6 @@ body {
   .box-flex(1);
 }
 
-#main .body {
-  .box-flex(1);
-  .vbox();
-  overflow: auto;
-  position: relative;
-  line-height: 22px;  
-}
-
 #main nav {
   padding: 20px;
   width: 150px;
@@ -180,6 +173,44 @@ body {
 #question {
   .box-flex(1);
   .hbox();
+}
+
+#question nav {
+  .vbox();
+  overflow: auto;
+}
+
+#question nav span {
+  display: block;
+  font-style: italic;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+#question .main {
+  .box-flex(1);
+  .vbox();
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#question .main .item {
+  max-width: 530px;
+  margin: 20px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid lighten(#DEDCD5, 5%);
+  .box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.6);
+  
+  .name {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  
+  .body {
+    margin-left: 10px;
+  }
 }
 
 /*
