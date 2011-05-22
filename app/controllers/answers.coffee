@@ -66,7 +66,7 @@ module.exports = Spine.Controller.create
     
     @list.bind "change", (answer) =>
       element = @answers.find(".item").forItem(answer).first()
-      @answers.prop(scrollTop: element.offset().top) if element
+      @answers.scrollTop(element[0].offsetTop - 10) if element[0]
 
   active: (item) ->
     @current = item if item
