@@ -56,9 +56,10 @@ pre {
   overflow: auto;
 }
 ul {
-  padding: 0;
+  /*  padding: 0;
   margin: 10px 0;
   list-style-position: inside;
+*/
 }
 header {
   height: 35px;

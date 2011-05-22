@@ -39,6 +39,8 @@ module.exports = Spine.Controller.create
   init: ->
     Question.bind "change", =>
       @render() if @current
+    @bind "active", =>
+      @navigate("/questions", @current.id) if @current
 
   template: (item) ->
     require("views/questions/panel")(item)

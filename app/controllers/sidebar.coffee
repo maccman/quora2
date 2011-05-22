@@ -16,6 +16,8 @@ module.exports = Spine.Controller.create
     @list = List.init(el: @questions)
     @list.bind("change", @change)
     Question.bind("change refresh", @render)
+    @bind "deactive", =>
+      @list.deactive()
 
   render: ->
     @list.render(Question.all())
