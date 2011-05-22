@@ -6,9 +6,13 @@ AnswersList = Spine.List.create
 
 module.exports = Spine.Controller.create
   elements:
-    ".answers": "answers",
-    ".main": "main"
+    ".answersNav": "answersNav",
+    ".answers": "answers"
+    "textarea": "bodyInput"
     
+  events:
+    "submit form": "create"
+
   template: (item) ->
     require("views/questions/panel")(item)
     
@@ -28,14 +32,24 @@ module.exports = Spine.Controller.create
     return unless @current
     
     answers = @current.answers.all()
-    @main.html(@answersTemplate(answers))
+    @answers.html(@answersTemplate(answers))
     
-    @list = AnswersList.init(el: @answers)
+    @list = AnswersList.init(el: @answersNav)
     @list.render(answers)
     
     @list.bind "change", (answer) =>
-      element = @main.find(".item").forItem(answer).first()
-      @main.prop(scrollTop: element.offset().top) if element
+      element = @answers.find(".item").forItem(answer).first()
+      @answers.prop(scrollTop: element.offset().top) if element
+      
+  create: (e) ->
+    e.preventDefault()
+    return unless @current
+    @current.answers.create(
+      name: "Joe Public",
+      body: @bodyInput.val()
+    )
+    @bodyInput.val("")
+    @render()
 
   active: (item) ->
     @current = item if item

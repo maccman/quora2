@@ -49,7 +49,7 @@ QuestionPrompt = Prompt.create
 
   template: (items) ->
     require("views/footer/question")(items)
-    
+
   submit: (e) ->
     e.preventDefault()
     Question.create(
